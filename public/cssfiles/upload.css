@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 40px;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('../images/CB_image.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+form{
+    border: 2px solid rgba(255, 255, 255, .2);
+    padding: 45px 45px 45px 45px;
+    border-radius: 10px;
+}
+
+#createBlog{
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+}
+
+.container h1 {
+    font-size: 36px;
+    text-align: center;
+    color:#fff;
+    padding: 20px 45px 20px 20px;
+    
+}
+
+.container label{
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+form #title{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: lavender;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #222;
+    margin: 10px;
+}
+
+form #content{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: lavender;
+    border: 2px solid black;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #222;
+    margin: 10px;
+}
+
+.container  #content{
+    
+    border: none;
+    outline: none;
+    
+    padding: 10px;
+}
+
+
+.container  #title{
+    
+    border: none;
+    outline: none;
+    
+    padding: 10px;
+}
+
+
+.container  #imageInput{
+    padding: 10px;
+}
+
+.container button {
+    width: 100%;
+    height: 45px;
+    background: black;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+}

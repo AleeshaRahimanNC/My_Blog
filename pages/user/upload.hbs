@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Blog Upload</title>
+    <link rel="stylesheet" href="cssfiles/upload.css"> <!-- Link to your CSS file for styling -->
+
+</head>
+
+<body>
+    <div class="container">
+        <form action="/createBlog?id={{userDetails._id}}" method="post" enctype="multipart/form-data" id="createBlog">
+            <h1>Blog Content Upload</h1>
+        
+                <input type="text" id="title" name="title" placeholder="Title">
+
+                <textarea id="content" name="content" rows="6" placeholder="Content" required></textarea>
+
+                <label for="image">Image</label>
+                <input type="file" id="imageInput" name="images" multiple accept="image/*" onchange="showImages()" required>
+                <div id="imagePreview"></div>
+                <button type="submit">Upload</button>
+     
+        </form>
+    </div>
+    <script src="/adminScript.js"></script> <!-- Link to your JavaScript file for interactivity -->
+</body>
+
+</html>
