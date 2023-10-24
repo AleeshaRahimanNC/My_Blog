@@ -1,123 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRO-Blogger</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="cssfiles/detailedView.css">
+  <link rel="shortcut icon" href="images/blog logo.jpeg" type="image x/-icon">
+
+
 </head>
+
 <body>
-    
-    {{!-- Navbar --}}
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  {{!--navbar--}}
+  <nav class="navbar navbar-expand-lg bg-white shadow py-3 sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/images/blog_icon.jpg" alt="blog_icon">
+        <h6>PRO-Blogger</h6>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav"></div>
+      
+      {{userDetails.name}}
+      <button class="btn btn-brand mx-2" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+  {{!-- Navbar --}}
+
+  {{!-- Carousel --}}
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      {{#if data.images.[0].filename}}
+      <div class="carousel-item text-center bg-cover vh-100 active">
+        <img src="/uploads/{{data.images.[0].filename}}" class="d-block w-100" alt="...">
+      </div>
+      {{/if}}
+      {{#if data.images.[1].filename}}
+      <div class="carousel-item text-center bg-cover vh-100">
+
+        <img src="/uploads/{{data.images.[1].filename}}" class="d-block w-100" alt="...">
+      </div>
+      {{/if}}
+      {{#if data.images.[2].filename}}
+      <div class="carousel-item text-center bg-cover vh-100">
+        <img src="/uploads/{{data.images.[2].filename}}" class="d-block w-100" alt="...">
+      </div>
+      {{/if}}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-     
-    </div>
-     {{userDetails.name}}
-     <button class="btn btn-danger mx-2" onclick="logout()">Logout</button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-</nav>
-{{!-- Navbar --}}
-<h1>{{data.heading}}</h1>
-<h4>This blog is created by {{data.createdBy.name}}</h4>
-<h6>{{data.createdBy.email}} </h6>
-{{!-- Carousel --}}
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner ">
-    {{#if data.images.[0].filename}}
-    <div class="carousel-item active w-100 object-fit">
-      <img src="/uploads/{{data.images.[0].filename}}" class="d-block w-100" alt="...">
-    </div>
-    {{/if}}
-    <div class="carousel-item w-100 object-fit-fill">
-    {{#if data.images.[1].filename}}
-      <img src="/uploads/{{data.images.[1].filename}}" class="d-block w-100" alt="...">
-    </div>
-      {{/if}}
-    <div class="carousel-item w-100 object-fit-fill">
-       {{#if data.images.[2].filename}}
-      <img src="/uploads/{{data.images.[1].filename}}" class="d-block w-100" alt="...">
-    </div>
-      {{/if}}
+
+  <div class="blog">
+    <h6>This blog is created by {{data.createdBy.name}}</h6>
+    <h6>{{data.createdBy.email}}</h6>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<p>{{data.content}}</p>
-{{!-- <section class="container">
+
+  <div class="part1">
+    <div class="heading">
+      <h1>{{data.heading}}</h1>
+      <p>{{data.content}}</p>
+    </div>
+
+    <div class="para">
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto voluptatem consequuntur ducimus commodi
+        magnam.
+        Sed ea earum itaque quo consequatur, rem, nihil amet in dolorem non provident id doloribus eos libero quae
+        adipisci iusto accusantium sint deleniti reprehenderit! Sit facilis quia eveniet recusandae fugiat corporis ea
+        aut
+        provident nemo, tenetur, nobis voluptatibus quos eius. Numquam aspernatur temporibus quos. Pariatur quo totam
+        facere doloribus quidem quae molestiae? Ipsa error eius, aliquid ducimus incidunt suscipit minus tempora quo
+        porro
+        neque corporis magnam, esse excepturi modi dolorum. Dolore inventore ex harum voluptates numquam, atque odit
+        tempora, non deserunt quo laboriosam eius qui minima.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum nisi tempore, beatae earum veniam animi
+        ratione
+        impedit qui laborum explicabo officiis sit illo similique ad vitae reprehenderit sequi itaque delectus eos!
+        Voluptatibus cum dolore autem veritatis? Molestias enim beatae atque temporibus tenetur. Saepe architecto,
+        eveniet
+        dolor suscipit corrupti fugit asperiores aliquid necessitatibus nisi illum reprehenderit eius distinctio
+        praesentium, tenetur earum ut, doloribus fugiat voluptatem non totam ullam iusto laboriosam. Quibusdam
+        suscipit
+        molestiae ea a ad veritatis quas dolores obcaecati? Quasi optio, nam et porro, totam illum doloremque voluptas
+        vitae harum maxime sunt similique. Officiis odit sit quas natus eos ratione?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum nisi tempore, beatae earum veniam animi
+        ratione
+        impedit qui laborum explicabo officiis sit illo similique ad vitae reprehenderit sequi itaque delectus eos!
+        Voluptatibus cum dolore autem veritatis? Molestias enim beatae atque temporibus tenetur. Saepe architecto,
+        eveniet
+        dolor suscipit corrupti fugit asperiores aliquid necessitatibus nisi illum reprehenderit eius distinctio
+        praesentium, tenetur earum ut, doloribus fugiat voluptatem non totam ullam iusto laboriosam. Quibusdam
+        suscipit
+        molestiae ea a ad veritatis quas dolores obcaecati? Quasi optio, nam et porro, totam illum doloremque voluptas
+        vitae harum maxime sunt similique. Officiis odit sit quas natus eos ratione?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum nisi tempore, beatae earum veniam animi
+        ratione
+        impedit qui laborum explicabo officiis sit illo similique ad vitae reprehenderit sequi itaque delectus eos!
+        Voluptatibus cum dolore autem veritatis? Molestias enim beatae atque temporibus tenetur. Saepe architecto,
+        eveniet
+        dolor suscipit corrupti fugit asperiores aliquid necessitatibus nisi illum reprehenderit eius distinctio
+        praesentium, tenetur earum ut, doloribus fugiat voluptatem non totam ullam iusto laboriosam. Quibusdam
+        suscipit
+        molestiae ea a ad veritatis quas dolores obcaecati? Quasi optio, nam et porro, totam illum doloremque voluptas
+        vitae harum maxime sunt similique. Officiis odit sit quas natus eos ratione?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum nisi tempore, beatae earum veniam animi
+        ratione
+        impedit qui laborum explicabo officiis sit illo similique ad vitae reprehenderit sequi itaque delectus eos!
+        Voluptatibus cum dolore autem veritatis? Molestias enim beatae atque temporibus tenetur. Saepe architecto,
+        eveniet
+        dolor suscipit corrupti fugit asperiores aliquid necessitatibus nisi illum reprehenderit eius distinctio
+        praesentium, tenetur earum ut, doloribus fugiat voluptatem non totam ullam iusto laboriosam. Quibusdam
+        suscipit
+        molestiae ea a ad veritatis quas dolores obcaecati? Quasi optio, nam et porro, totam illum doloremque voluptas
+        vitae harum maxime sunt similique. Officiis odit sit quas natus eos ratione?</p>
+
+    </div>
+  </div>
+
+  <h6>Blog Created at {{data.createdAt}}</h6>
+
+
+
+  {{!-- <section class="container">
     <div class="accordion" id="accordionPanelsStayOpenExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-      <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+            aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #1
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
+            plugin
+            adds the appropriate classes that we use to style each element. These classes control the overall
+            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+            custom
+            CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+            the
+            <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+            aria-controls="panelsStayOpen-collapseTwo">
+            Accordion Item #2
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
+            plugin adds the appropriate classes that we use to style each element. These classes control the overall
+            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+            custom
+            CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+            the
+            <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+            aria-controls="panelsStayOpen-collapseThree">
+            Accordion Item #3
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
+            plugin
+            adds the appropriate classes that we use to style each element. These classes control the overall
+            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+            custom
+            CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+            the
+            <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+  </section> --}}
+  {{!-- Carousel --}}
+
+  <!-- footer -->
+  <footer class="bg-cover">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-lg-4">
+
+            <p>
+              "There is no greater agony than bearing an untold story inside you"
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+              <a href="#"><i class="bi bi-google-play"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 ms-auto">
+            <h6 class="text-white mb-4">COMPANY</h6>
+            <P class="mb-1">About</P>
+            <P class="mb-1">Partners</P>
+            <p class="mb-0">Privacy Policy</p>
+          </div>
+
+          <div class="col-lg-3">
+            <h6 class="text-white mb-4">HELP</h6>
+            <P class="mb-1">Help Center</P>
+            <P class="mb-1">Help Forum</P>
+            <P class="mb-1">Video Tutorials</P>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-      <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    <!-- footer bottom -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row gy-3 justify-content-between">
+          <div class="col-auto">
+            <p class="mb-0">Copyrights all rights reserved</p>
+          </div>
+
+          <div class="col-auto">
+            <p class="mb-0">Designed By <a href="#">Aleesha</a></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</section> --}}
-{{!-- Carousel --}}
-<script src="script.js"></script>
+  </footer>
+  <!-- footer -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
 </body>

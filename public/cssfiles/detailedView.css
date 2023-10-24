@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&family=Spline+Sans:wght@400;500;600;700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     font-family: "spline sans", sans-serif;
     color: #777;
@@ -48,34 +55,25 @@ section {
    font-size: large;
 }
 
-/* heroSlider */
-
-.slide-1 {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/slide1.jpg);
+.para{
+    padding: 50px;
+    margin: 50px;
+    background: whitesmoke;
 }
 
-.slide-2 {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/slide2.jpg);
+.heading{
+    text-align: center;
+    margin-top: 10px;
 }
 
-#heroSlider h6::after,
-#heroSlider h6::before {
-    content: " ";
-    width: 40px;
-    height: 4px;
-    background-color: #ffffff;
-    display: inline-block;
-    margin: 10px;
-    vertical-align: middle;
+.blog{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 40px;
-    height: 70px;
-    margin: auto;
-
+.part1{
+    padding: 30px;
 }
 
 /* button */
@@ -98,76 +96,18 @@ section {
     color: #fff;
 }
 
-/* intro text */
+/* carousel */
 
-.intro-text {
-    margin-bottom: 40px;
-    text-align: center;
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 40px;
+    height: 70px;
+    margin: auto;
+
 }
 
-.intro-text p {
-    max-width: 500px;
-    margin: 16px auto 0 auto;
-}
-
-/* blog post */
-
-
-#blog{
-    background-color:#fff;
-}
-
-/* reviews */
-
-#reviews {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/review_img.jpg);
-}
-
-.review img {
-    width: 75px;
-    height: 75px;
-    object-fit: cover;
-}
-
-.review .quote-icon {
-
-    font-size: 74px;
-    color: #F58d17;
-    line-height: 1;
-}
-
-.review .stars {
-    color: #F58d17;
-}
-
-#reviews .carousel-indicators {
-    margin-bottom: -3rem;
-}
-
-/* thoughts */
-
-#thoughts .form-control {
-    border-radius: 0;
-}
-
-#thoughts .form-control:focus {
-    box-shadow: none;
-    border-color: #F58d17;
-}
-
-#thoughts input.form-control {
-    height: 47px;
-}
-
-#thought .remember-forgot {
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-
-.remember-forgot label input {
-    accent-color: #fff;
-    margin-right: 3px;
-}
 
 /* footer */
 
