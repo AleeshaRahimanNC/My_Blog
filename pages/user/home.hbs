@@ -95,12 +95,9 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nisi maxime eos. Perspiciatis
         tempora iure veniam?</p>
     </div>
-    <div class="container d-flex flex-row">
-
-
+    <div class="container d-flex gap-4 row mx-auto justify-content-center">
       {{#each data}}
-      <div class="card">
-
+      <div class="card col-lg-3 col-md-6" style="width: 18rem; ">
         <a href="/detailedView?id={{this._id}}">
           <img src="/uploads/{{this.images.[0].filename}}" class="card-img-top" alt="...">
           <div class="card-body">
@@ -112,8 +109,6 @@
 
       </div>
       {{/each}}
-
-
     </div>
   </section>
   {{!--Blog Post--}}
